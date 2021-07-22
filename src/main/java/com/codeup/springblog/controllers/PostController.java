@@ -26,20 +26,25 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String singlePost(@PathVariable long id) {
-        return "View and individual post";
+    public String singlePost(@PathVariable long id, Model model) {
+        Post post = new Post("Jeff buys bicycle.", "No one know why. Must really like the feeling of the wind on his face.");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
+    // When you visit the URL you will see the form to create a post.
     @GetMapping("/posts/create")
     @ResponseBody
     public String createForm() {
         return "View form to create a post.";
     }
 
+    // When you submit the form on the /posts/create page,
+    // the information will be posted to the same URL
+//    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     @PostMapping("/posts/create")
     @ResponseBody
-    public String createPosts() {
-        return "Create a new post.";
-
+    public String createPost() {
+        return "Creates new post.";
     }
 }

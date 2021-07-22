@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
-
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/part.html :: head ('Viewing All Posts')"></head>
+<body class="main">
+<nav th:replace="partials/part :: navbar"></nav>
+<header></header>
+<main class="container">
+    <div class="card head-card">
+        <div class="card-image">
+            <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h4 class="card-title">Viewing All Posts</h4>
+            <p>Click any post to view all of its content.</p>
+        </div>
+    </div>
+    <div th:each="post : ${posts}">
+        <div class="card offwhite-body">
+            <div class="card-image">
+                <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
+            </div>
+            <div class="card-content preview-post">
+                <h4 class="card-title" th:text="${post.title}"></h4>
+                <!--/*@thymesVar id="body" type=""*/-->
+                <p th:text="${post.body}"></p>
+            </div>
+            <div class="small-space" />
+        </div>
+    </div>
+</main>
+<footer th:replace="partials/part :: footer"></footer>
+<script th:replace="partials/part :: m-script"></script>
+<script th:replace="partials/part :: j-query"></script>
 </body>
 </html>

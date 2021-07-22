@@ -25,7 +25,7 @@ public class HelloController {
     }
 
     @PostMapping("/join")
-    public String joinCohort(@RequestParam(name = "cohort")String cohort, Model model) {
+    public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
         model.addAttribute("cohort", "Welcome to " + cohort + "!");
         return "join";
     }
@@ -38,7 +38,7 @@ public class HelloController {
 
     @RequestMapping(path = "hello/in/{color}", method = RequestMethod.GET)
     @ResponseBody
-    public String helloInColor(@PathVariable String color){
+    public String helloInColor(@PathVariable String color) {
         return "<h1 style=\"color: " + color + "\">Hello in " + color + "!</h1>";
     }
 }
